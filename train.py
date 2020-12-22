@@ -21,7 +21,6 @@ x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 
-### YOUR CODE HERE ###
 x_train, x_test, y_train, y_test= test_train_split(x, y, test_size=0.20)
 
 run = Run.get_context()
