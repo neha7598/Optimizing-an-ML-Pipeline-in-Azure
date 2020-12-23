@@ -15,7 +15,7 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
 path_to_data="https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-ds = TabularDatasetFactory.from_delimited_files(path_to_data)
+ds = TabularDatasetFactory.from_delimited_files(path=path_to_data)
 
 x, y = clean_data(ds)
 
