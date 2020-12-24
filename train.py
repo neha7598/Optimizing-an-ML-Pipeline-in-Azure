@@ -40,18 +40,8 @@ def clean_data(data):
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
 
     return x_df, y_df
-    
 
-def main():
-    # Add arguments to script
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
-    parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
-
-    args = parser.parse_args()
-
-    # TODO: Create TabularDataset using TabularDatasetFactory
+# TODO: Create TabularDataset using TabularDatasetFactory
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
@@ -62,9 +52,19 @@ def main():
 
     # TODO: Split data into train and test sets.
 
-    x_train, x_test, y_train, y_test= test_train_split(x, y, test_size=0.20)
+    x_train, x_test, y_train, y_test= test_train_split(x, y, test_size=0.20, random_state=2)
 
-    run = Run.get_context()
+    run = Run.get_context(allow_offline=True)
+    
+
+def main():
+    # Add arguments to script
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
+    parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
+
+    args = parser.parse_args()
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
