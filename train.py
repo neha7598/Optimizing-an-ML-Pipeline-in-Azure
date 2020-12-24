@@ -41,20 +41,6 @@ def clean_data(data):
 
     return x_df, y_df
 
-# TODO: Create TabularDataset using TabularDatasetFactory
-    # Data is located at:
-    # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-
-    path_to_data="https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    ds = TabularDatasetFactory.from_delimited_files(path=path_to_data)
-
-    x, y = clean_data(ds)
-
-    # TODO: Split data into train and test sets.
-
-    x_train, x_test, y_train, y_test= test_train_split(x, y, test_size=0.20, random_state=2)
-
-    run = Run.get_context(allow_offline=True)
     
 
 def main():
@@ -65,6 +51,21 @@ def main():
     parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
 
     args = parser.parse_args()
+
+    # TODO: Create TabularDataset using TabularDatasetFactory
+    # Data is located at:
+    # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+
+    path_to_data="https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+    ds = TabularDatasetFactory.from_delimited_files(path=path_to_data)
+
+    x, y = clean_data(ds)
+
+    # TODO: Split data into train and test sets.
+
+    x_train, x_test, y_train, y_test= train_test_split(x, y, test_size=0.20)
+
+    run = Run.get_context(allow_offline=True)
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
