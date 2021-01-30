@@ -27,4 +27,4 @@ Out of the two models the Scikit-learn based Logistic Regression with hyperparam
 Some areas of improvement for future experiments using HyperDrive include selecting different sampling methoda and early_stopping policies as well as increasing the number of total runs. Selecting a different sampling method (as opposed to Random Sampling in this case) can lead to a more exhaustive search of the search space which can potentially give us a better result. For AutoML, future experiments can explore having a experiment timeout time of more than 30 minutes, this can lead to a more exhaustive search and potentially better results. 
 
 ## Proof of cluster clean up
-An image of deletion of the compute cluster has been provided in the repository as proof of cluster clean-up.
+![Proof of Cluster Cleanup](https://github.com/neha7598/azure-ml-project1/blob/main/Proof%20of%20cluster%20cleanup.png)
