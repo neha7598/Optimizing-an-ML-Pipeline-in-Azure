@@ -52,7 +52,7 @@ def main():
 
     args = parser.parse_args()
 
-    # TODO: Create TabularDataset using TabularDatasetFactory
+    # Create TabularDataset using TabularDatasetFactory
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
@@ -61,7 +61,7 @@ def main():
 
     x, y = clean_data(ds)
 
-    # TODO: Split data into train and test sets.
+    # Split data into train and test sets.
 
     x_train, x_test, y_train, y_test= train_test_split(x, y, test_size=0.20)
 
