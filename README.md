@@ -13,7 +13,7 @@ Two models were trained in this project; one based on Scikit-learn's linear regr
 ## Scikit-learn Pipeline
 
 The following diagram demonstrates the Scikit Learn Pipeline with hyperparameter tuning using Hyperdrive- 
-
+![Scikit_learn_pipeline](Images/HyperDrive_Pipeline.png)
 
 The Scikit-learn model is a Logistic Regression Model which is trained using a custom coded script- train.py. First the dataset is fetched from the provided url as a TabularDataset. It is then cleaned and one hot encoding is performed on the data. The hyperparameters chosen for the Scikit-learn model are regularization strength (C) and max iterations (max_iter) and are tuned using HyperDrive. Finally the trained model is scored against 20% data selected from the original dataset. The hyperparameter tuning using HyperDrive requires several steps- Defining parameter search space, defining a sampling method, choosing a primary metric to optimize and selecting an early stopping policy. 
 
@@ -24,7 +24,7 @@ The early stopping policy used in this project is Bandit Policy which is based o
 ## AutoML
 
 The following diagram demonstrates the AutoML Pipeline- 
-
+![AutoML_Pipeline](Images/AutomatedML_Pipeline.png)
 
 AutoML searched for several algorithms to find which would perform best in this particular use case, several algorithms including LogisticRegression, SVM, Random Forest, MinMaxScaler, MaxAbsScaler, XGBoostClassifier, VotingEnsemble, etc were explored. The algorithm that performed the best was VotingEnsemble with an accuracy of 0.91745. AutoML automatically selected the best hyperparameters for the model training. AutoML automatically selects the algorithm and associated hyperparameters, the sampling policy, as well as the early stopping policy. It also selects algorithms that are blacklisted or won't work in that particular case (TensorFlowLinearClassifier and TensorFlowDNN in this case).
 
@@ -35,4 +35,4 @@ Out of the two models the Scikit-learn based Logistic Regression with hyperparam
 Some areas of improvement for future experiments using HyperDrive include selecting different sampling methoda and early_stopping policies as well as increasing the number of total runs. Selecting a different sampling method (as opposed to Random Sampling in this case) can lead to a more exhaustive search of the search space which can potentially give us a better result. For AutoML, future experiments can explore having a experiment timeout time of more than 30 minutes, this can lead to a more exhaustive search and potentially better results. 
 
 ## Proof of cluster clean up
-![Proof of Cluster Cleanup](Proof%20of%20cluster%20cleanup.png)
+![Proof of Cluster Cleanup](Images/Proof%20of%20cluster%20cleanup.png)
